@@ -1,15 +1,15 @@
 package org.seckill.exception;
 
-
 /**
- * Created by Administrator on 2017/3/30.
+ * 秒杀相关的所有业务异常
+ * Created by codingBoy on 16/11/27.
  */
-public class SeckillException extends RuntimeException{
+public class SeckillException extends RuntimeException {
     public SeckillException(String message) {
         super(message);
     }
 
-    public SeckillException(String message,Throwable cause) {
-        super(message,cause);
+    public SeckillException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

@@ -1,38 +1,38 @@
 package org.seckill.dto;
 
-import org.seckill.entity.Successkilled;
+import org.seckill.entity.SuccessKilled;
 import org.seckill.enums.SeckillStatEnum;
 
 /**
- * Created by Administrator on 2017/3/30.
+ * 封装执行秒杀后的结果:是否秒杀成功
+ * Created by codingBoy on 16/11/27.
  */
 public class SeckillExecution {
+
     private long seckillId;
 
     //秒杀执行结果的状态
     private int state;
 
-
-
     //状态的明文标识
     private String stateInfo;
 
     //当秒杀成功时，需要传递秒杀成功的对象回去
-    private Successkilled successkilled;
+    private SuccessKilled successKilled;
+
+    //秒杀成功返回所有信息
+    public SeckillExecution(long seckillId, SeckillStatEnum statEnum, SuccessKilled successKilled) {
+        this.seckillId = seckillId;
+        this.state = statEnum.getState();
+        this.stateInfo = statEnum.getInfo();
+        this.successKilled = successKilled;
+    }
 
     //秒杀失败
     public SeckillExecution(long seckillId, SeckillStatEnum statEnum) {
         this.seckillId = seckillId;
         this.state = statEnum.getState();
         this.stateInfo = statEnum.getInfo();
-    }
-
-    //秒杀成功返回所有信息
-    public SeckillExecution(long seckillId, SeckillStatEnum statEnum, Successkilled successkilled) {
-        this.seckillId = seckillId;
-        this.state = statEnum.getState();
-        this.stateInfo = statEnum.getInfo();
-        this.successkilled = successkilled;
     }
 
     public long getSeckillId() {
@@ -59,12 +59,13 @@ public class SeckillExecution {
         this.stateInfo = stateInfo;
     }
 
-    public Successkilled getSuccesskilled() {
-        return successkilled;
+    public SuccessKilled getSuccessKilled() {
+        return successKilled;
     }
 
-    public void setSuccesskilled(Successkilled successkilled) {
-        this.successkilled = successkilled;
+    public void setSuccessKilled(SuccessKilled successKilled) {
+
+        this.successKilled = successKilled;
     }
 
     @Override
@@ -73,7 +74,7 @@ public class SeckillExecution {
                 "seckillId=" + seckillId +
                 ", state=" + state +
                 ", stateInfo='" + stateInfo + '\'' +
-                ", successkilled=" + successkilled +
+                ", successKilled=" + successKilled +
                 '}';
     }
 }

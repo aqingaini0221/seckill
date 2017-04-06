@@ -1,9 +1,11 @@
 package org.seckill.dto;
 
 /**
- * Created by Administrator on 2017/3/30.
+ * Created by codingBoy on 16/11/27.
+ * 暴露秒杀地址(接口)DTO
  */
 public class Exposer {
+
     //是否开启秒杀
     private boolean exposed;
 

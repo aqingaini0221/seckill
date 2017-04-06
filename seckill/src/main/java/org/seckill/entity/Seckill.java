@@ -3,12 +3,13 @@ package org.seckill.entity;
 import java.util.Date;
 
 /**
- * Created by Administrator on 2017/3/30.
+ * Created by codingBoy on 16/11/24.
  */
-public class Seckill {
+public class Seckill
+{
     private long seckillId;
     private String name;
-    private Integer number;
+    private int number;
     private Date startTime;
     private Date endTime;
     private Date createTime;
@@ -29,11 +30,11 @@ public class Seckill {
         this.name = name;
     }
 
-    public Integer getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

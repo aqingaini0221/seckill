@@ -1,17 +1,27 @@
 package org.seckill.dao;
 
-import org.seckill.entity.Successkilled;
+import org.seckill.entity.SuccessKilled;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * Created by Administrator on 2017/3/30.
+ * Created by codingBoy on 16/11/27.
  */
-public interface SuccesskilledDao {
-    //插入购买明细，可重复过滤
-     // @return插入的行数
-    int insertSuccesskilled(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
+public interface SuccessKilledDao {
 
-    //根据秒杀商品的id查询明细Successkilled对象（该对象携带了seckill秒杀产品对象）
-    Successkilled queryByIdWithSeckill(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
+    /**
+     * 插入购买明细,可过滤重复
+     * @param seckillId
+     * @param userPhone
+     * @return插入的行数
+     */
+    int insertSuccessKilled(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
 
-    }
+
+    /**
+     * 根据秒杀商品的id查询明细SuccessKilled对象(该对象携带了Seckill秒杀产品对象)
+     * @param seckillId
+     * @return
+     */
+    SuccessKilled queryByIdWithSeckill(@Param("seckillId") long seckillId,@Param("userPhone") long userPhone);
+
+}

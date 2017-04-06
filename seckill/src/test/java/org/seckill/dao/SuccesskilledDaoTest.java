@@ -1,35 +1,42 @@
 package org.seckill.dao;
 
+import org.seckill.entity.SuccessKilled;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seckill.entity.Successkilled;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 
 /**
- * Created by Administrator on 2017/3/30.
+ * Created by codingBoy on 16/11/27.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+//告诉junit spring的配置文件
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
-public class SuccesskilledDaoTest {
+public class SuccessKilledDaoTest {
 
-    @Autowired
-    SuccesskilledDao successkilledDao;
+    @Resource
+    private SuccessKilledDao successKilledDao;
+
     @Test
-    public void insertSuccesskilled() throws Exception{
-        long seckillId = 1000L;
-        long userPhone = 15751866558L;
-        int row = successkilledDao.insertSuccesskilled(seckillId,userPhone);
-        System.out.println(row);
-    }
-    @Test
-    public void queryByIdWithSeckill() throws  Exception {
+    public void insertSuccessKilled() throws Exception {
+
         long seckillId=1000L;
-        long userPhone=15751866348L;
-        Successkilled successkilled=successkilledDao.queryByIdWithSeckill(seckillId,userPhone);
-        System.out.println(successkilled);
-        System.out.println(successkilled.getSeckillId());
+        long userPhone=13476191877L;
+        int insertCount=successKilledDao.insertSuccessKilled(seckillId,userPhone);
+        System.out.println("insertCount="+insertCount);
     }
+
+    @Test
+    public void queryByIdWithSeckill() throws Exception {
+        long seckillId=1000L;
+        long userPhone=13476191877L;
+        SuccessKilled successKilled=successKilledDao.queryByIdWithSeckill(seckillId,userPhone);
+        System.out.println(successKilled);
+        System.out.println(successKilled.getSeckill());
+
+
+    }
+
 }

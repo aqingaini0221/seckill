@@ -5,7 +5,7 @@ import org.seckill.dto.SeckillExecution;
 import org.seckill.dto.SeckillResult;
 import org.seckill.entity.Seckill;
 import org.seckill.enums.SeckillStatEnum;
-import org.seckill.exception.RepeatkillException;
+import org.seckill.exception.RepeatKillException;
 import org.seckill.exception.SeckillCloseException;
 import org.seckill.service.SeckillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class SeckillController
     @Autowired
     private SeckillService seckillService;
 
-    @RequestMapping(name = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(Model model)
     {
         //list.jsp+mode=ModelAndView
@@ -36,11 +36,9 @@ public class SeckillController
         return "list";
     }
 
-    //详情页
     @RequestMapping(value = "/{seckillId}/detail",method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId") Long seckillId, Model model)
     {
-
         if (seckillId == null)
         {
             return "redirect:/seckill/list";
@@ -59,8 +57,8 @@ public class SeckillController
 
     //ajax ,json暴露秒杀接口的方法
     @RequestMapping(value = "/{seckillId}/exposer",
-            method = RequestMethod.POST,
-            produces = {"application/json;charset=UTF-8"})
+                    method = RequestMethod.POST,
+                    produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public SeckillResult<Exposer> exposer(Long seckillId)
     {
@@ -94,9 +92,9 @@ public class SeckillController
         try {
             SeckillExecution execution = seckillService.executeSeckill(seckillId, phone, md5);
             return new SeckillResult<SeckillExecution>(true, execution);
-        }catch (RepeatkillException e1)
+        }catch (RepeatKillException e1)
         {
-            SeckillExecution execution=new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_kill);
+            SeckillExecution execution=new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
             return new SeckillResult<SeckillExecution>(true,execution);
         }catch (SeckillCloseException e2)
         {
